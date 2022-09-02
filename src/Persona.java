@@ -1,4 +1,8 @@
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 import javax.swing.JOptionPane;
+import javax.swing.text.html.HTMLDocument.RunElement;
 
 public class Persona {
     private String nombre;
@@ -83,7 +87,6 @@ public class Persona {
             }
         }
     }
-    
 
     public void ordenarPorEdad(Persona[] p1){
         Persona aux;
@@ -101,9 +104,72 @@ public class Persona {
         }
     }
 
-    public void filtrarNacionalidad(Persona[] p){
-        Persona aux;
+    public String filtrarNacionalidad(Persona[] p){
+        // ordenar nacionalidades
+        Persona aux1;
+        Persona[] clon = Arrays.copyOf(p, p.length);
+        for (int x = 0; x < clon.length; x++) {
+            for (int y = 0; y < clon.length - 1; y++) {
+                int c1 = (int) (clon[x].getNacionalidad().toLowerCase().charAt(0));
+                int c2 = (int) (clon[y].getNacionalidad().toLowerCase().charAt(0));
+                if (c2 > c1) {
+                    // Intercambiar
+                    aux1 = clon[x];
+                    clon[x] = clon[y];
+                    clon[y] = aux1;
+                }
+            }
+        }
         
+        String listarRepetidos = "";
+        int contador = 0; 
+        String aux = clon[0].nacionalidad.toLowerCase();
+        
+        for(int i = 0; i < clon.length; i++) {
+            if(aux.equals(clon[i].nacionalidad.toLowerCase())){
+                contador++;
+            } else {
+                listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+                contador = 1;
+                aux = clon[i].nacionalidad.toLowerCase();
+            }
+        }
+        listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+        return listarRepetidos;
+    }
+
+    public String filtrarGenero(Persona[] p){
+        // ordenar nacionalidades
+        Persona aux1;
+        Persona[] clon = Arrays.copyOf(p, p.length);
+        for (int x = 0; x < clon.length; x++) {
+            for (int y = 0; y < clon.length - 1; y++) {
+                int c1 = (int) (Character.toLowerCase(clon[x].sexo));
+                int c2 = (int) (Character.toLowerCase(clon[y].sexo));
+                if (c2 > c1) {
+                    // Intercambiar
+                    aux1 = clon[x];
+                    clon[x] = clon[y];
+                    clon[y] = aux1;
+                }
+            }
+        }
+        
+        String listarRepetidos = "";
+        int contador = 0; 
+        char aux = Character.toLowerCase(clon[0].sexo);
+        
+        for(int i = 0; i < clon.length; i++) {
+            if(aux == Character.toLowerCase(clon[i].sexo)){
+                contador++;
+            } else {
+                listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+                contador = 1;
+                aux = Character.toLowerCase(clon[i].sexo);
+            }
+        }
+        listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+        return listarRepetidos;
     }
     
     @Override

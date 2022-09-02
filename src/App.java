@@ -130,6 +130,14 @@ public class App {
                     }
                     JOptionPane.showMessageDialog(null, "Listado por Edades\n\n" + listadoEdades);
                 break;
+                case 8:
+                    String filtroNacionalidad = aux.filtrarNacionalidad(personas);
+                    JOptionPane.showMessageDialog(null, "Listado por nacionalidades\n " + listar(nPersonas, personas) + "\n" + filtroNacionalidad);
+                break;
+                case 9:
+                    String filtroGenero = aux.filtrarGenero(personas);
+                    JOptionPane.showMessageDialog(null, "Listado por Genero\n " + listar(nPersonas, personas) + "\n" + filtroGenero);
+                break;
             }
         }while(op!=0);
     }
