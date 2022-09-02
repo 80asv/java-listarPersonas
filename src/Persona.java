@@ -1,8 +1,6 @@
-import java.lang.reflect.Method;
 import java.util.Arrays;
-
 import javax.swing.JOptionPane;
-import javax.swing.text.html.HTMLDocument.RunElement;
+
 
 public class Persona {
     private String nombre;
@@ -155,6 +153,7 @@ public class Persona {
             }
         }
         
+        String genero="";
         String listarRepetidos = "";
         int contador = 0; 
         char aux = Character.toLowerCase(clon[0].sexo);
@@ -163,12 +162,14 @@ public class Persona {
             if(aux == Character.toLowerCase(clon[i].sexo)){
                 contador++;
             } else {
-                listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+                genero = (aux == 'f') ? "mujer" : "hombre";
+                listarRepetidos = listarRepetidos + "Hay " + contador + " " + genero + "\n";
                 contador = 1;
                 aux = Character.toLowerCase(clon[i].sexo);
             }
         }
-        listarRepetidos = listarRepetidos + "Hay " + contador + " " + aux + "\n";
+        genero = (aux == 'f') ? "mujer(es)" : "hombre(s)";
+        listarRepetidos = listarRepetidos + "Hay " + contador + " " + genero + "\n";
         return listarRepetidos;
     }
     
