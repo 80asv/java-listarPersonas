@@ -162,7 +162,7 @@ public class Persona {
             if(aux == Character.toLowerCase(clon[i].sexo)){
                 contador++;
             } else {
-                genero = (aux == 'f') ? "mujer" : "hombre";
+                genero = (aux == 'f') ? "mujer(es)" : "hombre(s)";
                 listarRepetidos = listarRepetidos + "Hay " + contador + " " + genero + "\n";
                 contador = 1;
                 aux = Character.toLowerCase(clon[i].sexo);
